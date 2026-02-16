@@ -26,6 +26,7 @@ body {
 .fade-up:nth-child(2) { animation-delay: 0.2s; }
 .fade-up:nth-child(3) { animation-delay: 0.3s; }
 .fade-up:nth-child(4) { animation-delay: 0.4s; }
+.fade-up:nth-child(5) { animation-delay: 0.5s; }
 
 @keyframes fadeUp {
     to {
@@ -110,6 +111,18 @@ body {
         transform: translateX(0);
     }
 }
+
+/* СТИЛЬ ДЛЯ НОВОГО БЛОКА */
+.style-text {
+    font-size: 20px;
+    line-height: 1.4;
+    font-weight: 500;
+}
+
+.style-icon {
+    font-size: 32px;
+    margin-bottom: 10px;
+}
 </style>
 </head>
 
@@ -151,6 +164,16 @@ body {
              class="car"
              loading="eager"
              decoding="async">
+    </div>
+
+    <!-- НОВЫЙ БЛОК: Стиль одежды -->
+    <div class="card beige fade-up">
+        <div class="style-icon">👗✨</div>
+        <div class="big-title" style="font-size: 32px; margin-bottom: 8px;">Стиль одежды</div>
+        <div class="style-text">
+            Как тебе хочется<br>
+            <span style="font-size: 16px; opacity: 0.8;">(главное — чтобы ты чувствовала себя красивой)</span>
+        </div>
     </div>
 
     <a class="button fade-up" onclick="downloadICS()">
