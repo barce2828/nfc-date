@@ -53,7 +53,7 @@ body {
 }
 
 .button {
-    margin-top: 20px;
+    margin-top: 10px;
     background: #E87BB3;
     color: white;
     text-align: center;
@@ -94,26 +94,31 @@ body {
 
     <!-- Блок водитель -->
     <div class="card pink" style="position:relative; overflow:hidden;">
-    
-    <div style="position:relative; z-index:2;">
-        <div style="font-size:26px; font-weight:bold;">
-            Заберёт водитель<br>в ~20:40
+        <div style="position:relative; z-index:2;">
+            <div style="font-size:26px; font-weight:bold;">
+                Заберёт водитель<br>в ~20:40
+            </div>
+            <div style="margin-top:15px;">
+                Стоимость: оплачено
+            </div>
         </div>
-        <div style="margin-top:15px;">
-            Стоимость: оплачено
-        </div>
+
+        <img src="car.png" 
+             style="
+                position:absolute;
+                bottom:0;
+                right:-20px;
+                width:220px;
+                z-index:1;
+             ">
     </div>
 
-    <img src="car.png" 
-         style="
-            position:absolute;
-            bottom:0;
-            right:-20px;
-            width:220px;
-            z-index:1;
-         ">
-</div>
+    <!-- КНОПКА -->
+    <a class="button" onclick="downloadICS()">
+        Добавить в календарь
+    </a>
 
+</div>
 
 <script>
 function downloadICS() {
@@ -128,7 +133,7 @@ SUMMARY:Свидание 💕
 DTSTART:20260228T180000Z
 DTEND:20260228T200000Z
 DESCRIPTION:Био Шмио. Водитель заберёт в 20:40.
-LOCATION:ул. Рубинштейна 20
+LOCATION:ул. Малышева 128
 END:VEVENT
 END:VCALENDAR`;
 
@@ -143,13 +148,11 @@ END:VCALENDAR`;
             "&text=Свидание" +
             "&dates=20260228T180000Z/20260228T200000Z" +
             "&details=Био Шмио. Водитель заберёт в 20:40." +
-            "&location=ул. Рубинштейна 20"
+            "&location=ул. Малышева 128"
         );
     }
 }
 </script>
 
-
 </body>
 </html>
-
