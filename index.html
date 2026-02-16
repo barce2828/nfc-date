@@ -111,7 +111,11 @@ body {
 
 <script>
 function downloadICS() {
-    const icsContent = `BEGIN:VCALENDAR
+
+    const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
+
+    if (isIOS) {
+        const icsContent = `BEGIN:VCALENDAR
 VERSION:2.0
 BEGIN:VEVENT
 SUMMARY:Свидание 💕
@@ -122,13 +126,23 @@ LOCATION:ул. Рубинштейна 20
 END:VEVENT
 END:VCALENDAR`;
 
-    const blob = new Blob([icsContent], { type: 'text/calendar' });
-    const link = document.createElement('a');
-    link.href = URL.createObjectURL(blob);
-    link.download = 'date.ics';
-    link.click();
+        const blob = new Blob([icsContent], { type: 'text/calendar' });
+        const link = document.createElement('a');
+        link.href = URL.createObjectURL(blob);
+        link.download = 'date.ics';
+        link.click();
+    } else {
+        window.open(
+            "https://calendar.google.com/calendar/render?action=TEMPLATE" +
+            "&text=Свидание" +
+            "&dates=20260228T180000Z/20260228T200000Z" +
+            "&details=Био Шмио. Водитель заберёт в 20:40." +
+            "&location=ул. Рубинштейна 20"
+        );
+    }
 }
 </script>
+
 
 </body>
 </html>
