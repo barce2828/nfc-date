@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DATE</title>
+<style>
+body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+    background: #000;
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+}
+
+.container {
+    width: 100%;
+    max-width: 420px;
+    display: grid;
+    gap: 16px;
+}
+
+.card {
+    border-radius: 30px;
+    padding: 24px;
+}
+
+.pink {
+    background: #E87BB3;
+    color: #fff5e6;
+}
+
+.beige {
+    background: #e8dfcf;
+    color: #000;
+}
+
+.big-title {
+    font-size: 42px;
+    font-weight: bold;
+    line-height: 1;
+}
+
+.small-text {
+    font-size: 16px;
+}
+
+.row {
+    display: flex;
+    justify-content: space-between;
+}
+
+.amount {
+    font-size: 42px;
+    font-weight: bold;
+}
+
+.barcode {
+    height: 60px;
+    background: repeating-linear-gradient(
+        90deg,
+        #000,
+        #000 3px,
+        #fff 3px,
+        #fff 6px
+    );
+    margin-top: 20px;
+    border-radius: 8px;
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+
+    <div class="card pink">
+        <div class="big-title">DUO<br>ASIA</div>
+        <div class="row small-text" style="margin-top: 20px;">
+            <div>Адрес:<br>ул. Рубинштейна 20</div>
+            <div>Время:<br>21:00–23:00</div>
+        </div>
+    </div>
+
+    <div class="row" style="gap:16px;">
+        <div class="card pink" style="flex:1;">
+            <div class="big-title">1 MAR</div>
+            <div class="small-text">Воскресенье</div>
+        </div>
+
+        <div class="card beige" style="flex:1;">
+            <div class="big-title">DATE</div>
+            <div class="small-text">Приглашение<br>на свидание</div>
+        </div>
+    </div>
+
+    <div class="card beige">
+        <div class="row">
+            <div class="small-text">Сертификат<br>на шоппинг</div>
+            <div class="amount">50.000</div>
+        </div>
+        <div class="barcode"></div>
+    </div>
+
+</div>
+
+</body>
+</html>
