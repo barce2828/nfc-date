@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>DATE</title>
+
 <style>
 body {
     margin: 0;
@@ -51,31 +52,28 @@ body {
     justify-content: space-between;
 }
 
-.amount {
-    font-size: 42px;
-    font-weight: bold;
-}
-
-.barcode {
-    height: 60px;
-    background: repeating-linear-gradient(
-        90deg,
-        #000,
-        #000 3px,
-        #fff 3px,
-        #fff 6px
-    );
+.button {
     margin-top: 20px;
-    border-radius: 8px;
+    background: #E87BB3;
+    color: white;
+    text-align: center;
+    padding: 18px;
+    border-radius: 30px;
+    font-size: 20px;
+    font-weight: 500;
+    cursor: pointer;
+    text-decoration: none;
+    display: block;
 }
 </style>
 </head>
+
 <body>
 
 <div class="container">
 
     <div class="card pink">
-        <div class="big-title">DUO<br>ASIA</div>
+        <div class="big-title">Био<br>Шмио</div>
         <div class="row small-text" style="margin-top: 20px;">
             <div>Адрес:<br>ул. Рубинштейна 20</div>
             <div>Время:<br>21:00–23:00</div>
@@ -84,8 +82,8 @@ body {
 
     <div class="row" style="gap:16px;">
         <div class="card pink" style="flex:1;">
-            <div class="big-title">1 MAR</div>
-            <div class="small-text">Воскресенье</div>
+            <div class="big-title">28 FEB</div>
+            <div class="small-text">Суббота</div>
         </div>
 
         <div class="card beige" style="flex:1;">
@@ -94,15 +92,44 @@ body {
         </div>
     </div>
 
-    <div class="card beige">
-        <div class="row">
-            <div class="small-text">Сертификат<br>на шоппинг</div>
-            <div class="amount">50.000</div>
+    <!-- Блок водитель -->
+    <div class="card pink">
+        <div class="big-title" style="font-size:26px;">
+            Заберёт водитель<br>в ~20:40
         </div>
-        <div class="barcode"></div>
+        <div class="small-text" style="margin-top:15px;">
+            Стоимость: оплачено
+        </div>
     </div>
+
+    <!-- Кнопка календаря -->
+    <a class="button" onclick="downloadICS()">
+        Добавить в календарь
+    </a>
 
 </div>
 
+<script>
+function downloadICS() {
+    const icsContent = `BEGIN:VCALENDAR
+VERSION:2.0
+BEGIN:VEVENT
+SUMMARY:Свидание 💕
+DTSTART:20260228T180000Z
+DTEND:20260228T200000Z
+DESCRIPTION:Био Шмио. Водитель заберёт в 20:40.
+LOCATION:ул. Рубинштейна 20
+END:VEVENT
+END:VCALENDAR`;
+
+    const blob = new Blob([icsContent], { type: 'text/calendar' });
+    const link = document.createElement('a');
+    link.href = URL.createObjectURL(blob);
+    link.download = 'date.ics';
+    link.click();
+}
+</script>
+
 </body>
 </html>
+
