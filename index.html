@@ -27,6 +27,7 @@ body {
 .fade-up:nth-child(3) { animation-delay: 0.3s; }
 .fade-up:nth-child(4) { animation-delay: 0.4s; }
 .fade-up:nth-child(5) { animation-delay: 0.5s; }
+.fade-up:nth-child(6) { animation-delay: 0.6s; } /* Добавил для новой кнопки */
 
 @keyframes fadeUp {
     to {
@@ -86,6 +87,8 @@ body {
     text-decoration: none;
     display: block;
     transition: 0.2s ease;
+    border: none; /* Добавил для формы */
+    width: 100%; /* Добавил для формы */
 }
 
 .button:active {
@@ -176,6 +179,11 @@ body {
         </div>
     </div>
 
+    <!-- ===== НОВАЯ КНОПКА "ПРИНЯТЬ ПРИГЛАШЕНИЕ" ===== -->
+    <button class="button fade-up" onclick="acceptInvitation()" style="background: #E87BB3; color: white;">
+        ✅ Принять приглашение
+    </button>
+
     <a class="button fade-up" onclick="downloadICS()">
         Добавить в календарь
     </a>
@@ -213,6 +221,52 @@ END:VCALENDAR`;
             "&location=ул. Малышева 128"
         );
     }
+}
+
+// ===== НОВАЯ ФУНКЦИЯ ДЛЯ ТЕЛЕГРАМ =====
+function acceptInvitation() {
+    // ⚠️ ЗАМЕНИ ЭТИ ЗНАЧЕНИЯ НА СВОИ:
+    const BOT_TOKEN = '7083497562:AAEqdnmTly04ihBYZ1IQh6aMYAZRkvukEvk';  // Токен от @BotFather
+    const CHAT_ID = '668911996';  // Твой ID от @userinfobot
+    
+    const message = `🎉 ПРИГЛАШЕНИЕ ПРИНЯТО!
+    
+💕 Событие: Свидание
+📅 Дата: 28 февраля 2026
+⏰ Время: 21:00
+📍 Место: Био Шмио
+🚗 Заберут: 20:40
+
+Статус: ✅ Подтверждено`;
+
+    // Отправляем в Telegram
+    fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+            chat_id: CHAT_ID,
+            text: message,
+            parse_mode: 'HTML'
+        })
+    })
+    .then(response => {
+        if (response.ok) {
+            alert('❤️ Спасибо! Я очень рад! До встречи 28 февраля!');
+            
+            // Меняем кнопку
+            const btn = event.target;
+            btn.textContent = '✓ Приглашение принято';
+            btn.style.background = '#4CAF50';
+            btn.disabled = true;
+        }
+    })
+    .catch(error => {
+        // Даже если Telegram не сработает, показываем уведомление
+        alert('❤️ Спасибо! Жду с нетерпением!');
+        console.log('Приглашение принято, но Telegram не отправился:', error);
+    });
 }
 </script>
 
