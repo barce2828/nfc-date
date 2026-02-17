@@ -27,7 +27,7 @@ body {
 .fade-up:nth-child(3) { animation-delay: 0.3s; }
 .fade-up:nth-child(4) { animation-delay: 0.4s; }
 .fade-up:nth-child(5) { animation-delay: 0.5s; }
-.fade-up:nth-child(6) { animation-delay: 0.6s; } /* Добавил для новой кнопки */
+.fade-up:nth-child(6) { animation-delay: 0.6s; }
 
 @keyframes fadeUp {
     to {
@@ -87,8 +87,28 @@ body {
     text-decoration: none;
     display: block;
     transition: 0.2s ease;
-    border: none; /* Добавил для формы */
-    width: 100%; /* Добавил для формы */
+    border: none;
+    width: 100%;
+    box-sizing: border-box; /* Важно! Учитывает padding в ширине */
+    font-family: inherit; /* Наследуем шрифт */
+    line-height: 1.2; /* Фиксируем высоту строки */
+}
+
+/* Убираем лишние отступы у кнопки */
+button.button {
+    margin: 0; /* Сбрасываем марджины */
+    -webkit-appearance: none;
+    appearance: none;
+}
+
+/* Убираем лишние отступы у ссылки */
+a.button {
+    margin: 0;
+}
+
+/* Отдельный класс для отступа между кнопками */
+.button-gap {
+    margin-top: 16px;
 }
 
 .button:active {
@@ -179,12 +199,13 @@ body {
         </div>
     </div>
 
-    <!-- ===== НОВАЯ КНОПКА "ПРИНЯТЬ ПРИГЛАШЕНИЕ" ===== -->
+    <!-- ===== КНОПКА "ПРИНЯТЬ ПРИГЛАШЕНИЕ" ===== -->
     <button class="button fade-up" onclick="acceptInvitation()" style="background: #E87BB3; color: white;">
         ✅ Принять приглашение
     </button>
 
-    <a class="button fade-up" onclick="downloadICS()">
+    <!-- ===== КНОПКА "ДОБАВИТЬ В КАЛЕНДАРЬ" ===== -->
+    <a class="button fade-up" onclick="downloadICS()" style="margin-top: 0;">
         Добавить в календарь
     </a>
 
